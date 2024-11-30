@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsshxxh6xflwu"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="4_luuqv"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5fxss"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yvx4p"]
+
+[node name="player" type="Node3D"]
+
+[node name="Player" type="CharacterBody3D" parent="."]
+script = ExtResource("4_luuqv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_5fxss")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1.115, 0, 0, 0, 1.115, 0, 0, 0, 1.115, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_yvx4p")
+
+[node name="CamOrigin" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25207, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Player/CamOrigin"]
+transform = Transform3D(1, 0, 0, 0, 0.879225, 0.476407, 0, -0.476407, 0.879225, 0, 0, 0)
+spring_length = 2.0
+margin = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="Player/CamOrigin/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.05247)
