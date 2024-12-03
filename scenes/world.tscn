@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://addons/cyclops_level_builder/resources/data_vector_int.gd" id="3_ty2dt"]
 [ext_resource type="Script" path="res://addons/cyclops_level_builder/resources/data_vector_float.gd" id="4_s7w6e"]
 [ext_resource type="Script" path="res://addons/cyclops_level_builder/resources/mesh_vector_data.gd" id="5_nkuno"]
-[ext_resource type="PackedScene" uid="uid://bsshxxh6xflwu" path="res://scenes/player.tscn" id="6_uihc6"]
+[ext_resource type="PackedScene" uid="uid://dea26pacwn66b" path="res://characters/ratpunk.tscn" id="6_fgw0u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_okjuy"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -572,5 +572,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 18)
 script = ExtResource("1_nrv1a")
 mesh_vector_data = SubResource("Resource_t0rki")
 
-[node name="camera" parent="." instance=ExtResource("6_uihc6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9694, 0.00605869, 31.7848)
+[node name="player" parent="." instance=ExtResource("6_fgw0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4326, 0, 31.7057)
