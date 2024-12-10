@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://mvd2rglohmf0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b5ut2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xjanq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_smjv1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_317p6"]
+albedo_color = Color(1, 0.133333, 1, 1)
+
+[node name="Physics Object" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_b5ut2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+physics_interpolation_mode = 1
+shape = SubResource("BoxShape3D_xjanq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("BoxMesh_smjv1")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_317p6")

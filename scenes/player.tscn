@@ -29,3 +29,8 @@ margin = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="Player/CamOrigin/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.05247)
+
+[node name="Timer" type="Timer" parent="Player"]
+one_shot = true
+
+[connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]

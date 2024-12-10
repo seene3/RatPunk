@@ -1,12 +1,15 @@
 extends CharacterBody3D
+@onready var timer: Timer = $Timer
 
 
-var current_speed = 5.0
+var current_speed = 10.0
 var lerp_speed = 10
 var direction = Vector3.ZERO
+@export var dash_count = 1
+
 const JUMP_VELOCITY = 4.5
 const walk_speed = 5.0
-const sprint_speed = 10.0
+const sprint_speed = 50.0
 
 @onready var pivot: Node3D = $CamOrigin
 @export var sens = 0.5
@@ -20,10 +23,17 @@ func _input(event: InputEvent) -> void:
 		pivot.rotate_x(deg_to_rad(-event.relative.y * sens))
 		pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(-90), deg_to_rad(45))
 
+func _on_timer_timeout() -> void:
+	dash_count += 1
+	print_debug("Dash +1")
+
 func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("sprint"):
-		current_speed = sprint_speed
+		if (dash_count > 0):
+			direction.x += 5
+			#dash_count -= 1
+			#$Timer.start()
 	else:
 		current_speed = walk_speed
 	
