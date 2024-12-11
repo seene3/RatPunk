@@ -25,12 +25,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25207, 0)
 [node name="SpringArm3D" type="SpringArm3D" parent="Player/CamOrigin"]
 transform = Transform3D(1, 0, 0, 0, 0.879225, 0.476407, 0, -0.476407, 0.879225, 0, 0, 0)
 spring_length = 2.0
-margin = 0.5
+margin = 0.05
 
 [node name="Camera3D" type="Camera3D" parent="Player/CamOrigin/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.05247)
 
-[node name="Timer" type="Timer" parent="Player"]
+[node name="DashCooldownTimer" type="Timer" parent="Player"]
 one_shot = true
 
-[connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
+[connection signal="timeout" from="Player/DashCooldownTimer" to="Player" method="_on_timer_timeout"]
