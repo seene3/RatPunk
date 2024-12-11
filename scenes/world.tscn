@@ -706,7 +706,7 @@ mesh_vector_data = SubResource("Resource_t0rki")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4326, 0, 31.7057)
 
 [node name="Physics Object" parent="." instance=ExtResource("7_n3orf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0846, 1.65249, 26.8268)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3919, 1.65249, 26.8268)
 
 [node name="converted_blocks0" type="Node3D" parent="."]
 
