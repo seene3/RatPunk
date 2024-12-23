@@ -1,6 +1,7 @@
 extends CharacterBody3D
 @onready var dashCooldownTimer: Timer = $DashCooldownTimer
 
+var jump_count = 1
 var current_speed = 10.0
 var lerp_speed = 10
 var direction = Vector3.ZERO
@@ -11,7 +12,7 @@ var extraVelocity = Vector3.ZERO
 @export var dash_count_max = 3
 
 const JUMP_VELOCITY = 4.5
-const walk_speed = 5.0
+const crouch_speed = 5.0
 const sprint_speed = 50.0
 
 @onready var pivot: Node3D = $CamOrigin
@@ -44,8 +45,19 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+	
+	if Input.is_action_just_pressed("jump") and not is_on_floor() and jump_count > 0:
+		velocity.y = JUMP_VELOCITY
+		jump_count -= 1
+	
+	if not is_on_floor():
+		current_speed = 5.0
+	
+	if is_on_floor():
+		jump_count = 1
+		current_speed = 10.0
 	
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
